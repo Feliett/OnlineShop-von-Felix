@@ -1,70 +1,104 @@
 [
   {
-    "id": 1,
-    "name": "Coolmax®-Hemd Regular Fit",
-    "price": 24.99,
-    "oldPrice": 30.99,
+    "id": "p1",
+    "name": "Herren T-Shirt",
     "category": "Bekleidung",
-    "image": "images/hemd-weiss.jpg",
-    "description": "Ein klassisches Hemd in Weiß, ideal für den Business-Look.",
-    "gender": "Männer",
-    "size": ["M", "L", "XL"]
+    "price": 19.99,
+    "description": "Hochwertiges T-Shirt aus 100% Baumwolle.",
+    "image": "images/tshirt.jpg",
+    "sizeStock": {
+      "XS": 5,
+      "S": 10,
+      "M": 15,
+      "L": 12,
+      "XL": 8,
+      "XXL": 4
+    }
   },
   {
-    "id": 2,
-    "name": "Coolmax® T-Shirt Slim Fit",
-    "price": 14.99,
-    "category": "Bekleidung",
-    "image": "images/tshirt-schwarz.jpg",
-    "description": "Ein bequemes T-Shirt in Schwarz für den Alltag.",
-    "gender": "Frauen",
-    "size": ["S", "M", "L"]
-  },
-  {
-    "id": 3,
-    "name": "Elegante Armbanduhr",
-    "price": 99.99,
-    "category": "Uhren",
-    "image": "images/uhr_elegant.jpg",
-    "description": "Eine elegante Uhr, die zu jedem Anlass passt.",
-    "gender": "Männer"
-  },
-  {
-    "id": 4,
-    "name": "Moderne Accessoires Tasche",
+    "id": "p2",
+    "name": "Damen Sneaker",
+    "category": "Schuhe",
     "price": 49.99,
-    "category": "Accessoires",
-    "image": "images/tasche.jpg",
-    "description": "Eine moderne Tasche für den Alltag.",
-    "gender": "Frauen"
-  },
-  {
-    "id": 5,
-    "name": "Exquisiter Schmuckanhänger",
-    "price": 29.99,
-    "category": "Schmuck",
-    "image": "images/schmuck.jpg",
-    "description": "Ein wunderschöner Anhänger, der jedes Outfit veredelt.",
-    "gender": "Frauen"
-  },
-  {
-    "id": 6,
-    "name": "Designer Sneaker",
-    "price": 79.99,
-    "category": "Schuhe",
+    "description": "Stylischer Sneaker mit bequemer Sohle.",
     "image": "images/sneaker.jpg",
-    "description": "Moderne Sneaker in verschiedenen Größen erhältlich.",
-    "gender": "Männer",
-    "shoeSize": ["42", "43", "45"]
+    "sizeStock": {
+      "36": 5,
+      "37": 8,
+      "38": 10,
+      "39": 6,
+      "40": 3,
+      "41": 4,
+      "42": 2
+    }
   },
   {
-    "id": 7,
-    "name": "Lässige Sneaker",
-    "price": 69.99,
+    "id": "p3",
+    "name": "Armbanduhr Elegant",
+    "category": "Schmuck",
+    "price": 199.99,
+    "description": "Edle Armbanduhr mit Lederarmband.",
+    "image": "images/watch.jpg",
+    "stock": 10
+  },
+  {
+    "id": "p4",
+    "name": "Leder Geldbörse",
+    "category": "Accessoires",
+    "price": 29.99,
+    "description": "Elegante Leder-Geldbörse mit vielen Fächern.",
+    "image": "images/wallet.jpg",
+    "stock": 20
+  },
+  {
+    "id": "p5",
+    "name": "Damen Bluse",
+    "category": "Bekleidung",
+    "price": 39.99,
+    "description": "Elegante Bluse aus Seide.",
+    "image": "images/blouse.jpg",
+    "sizeStock": {
+      "XS": 6,
+      "S": 10,
+      "M": 8,
+      "L": 4,
+      "XL": 2,
+      "XXL": 1
+    }
+  },
+  {
+    "id": "p6",
+    "name": "Herren Lederschuhe",
     "category": "Schuhe",
-    "image": "images/sneaker2.jpg",
-    "description": "Bequeme Sneaker für den Alltag.",
-    "gender": "Frauen",
-    "shoeSize": 38
+    "price": 89.99,
+    "description": "Edle Lederschuhe für Business und Freizeit.",
+    "image": "images/leather-shoes.jpg",
+    "sizeStock": {
+      "40": 4,
+      "41": 5,
+      "42": 3,
+      "43": 6,
+      "44": 2,
+      "45": 1,
+      "46": 0
+    }
+  },
+  {
+    "id": "p7",
+    "name": "Silberne Halskette",
+    "category": "Schmuck",
+    "price": 79.99,
+    "description": "Feine Silberkette mit Anhänger.",
+    "image": "images/necklace.jpg",
+    "stock": 15
+  },
+  {
+    "id": "p8",
+    "name": "Designer Sonnenbrille",
+    "category": "Accessoires",
+    "price": 129.99,
+    "description": "UV400 Schutz, polarisierte Gläser.",
+    "image": "images/sunglasses.jpg",
+    "stock": 8
   }
 ]
