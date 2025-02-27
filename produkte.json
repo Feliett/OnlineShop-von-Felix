@@ -5,7 +5,7 @@
     "price": 24.99,
     "oldPrice": 30.99,
     "category": "Bekleidung",
-    "image": "images/hemd_weiss.jpg",
+    "image": "images/hemd-weiss.jpg",
     "description": "Ein klassisches Hemd in Weiß, ideal für den Business-Look.",
     "gender": "Männer",
     "size": ["M", "L", "XL"]
@@ -15,7 +15,7 @@
     "name": "Coolmax® T-Shirt Slim Fit",
     "price": 14.99,
     "category": "Bekleidung",
-    "image": "images/tshirt_schwarz.jpg",
+    "image": "images/tshirt-schwarz.jpg",
     "description": "Ein bequemes T-Shirt in Schwarz für den Alltag.",
     "gender": "Frauen",
     "size": ["S", "M", "L"]
@@ -55,7 +55,7 @@
     "image": "images/sneaker.jpg",
     "description": "Moderne Sneaker in verschiedenen Größen erhältlich.",
     "gender": "Männer",
-    "shoeSize": 42
+    "shoeSize": 42, 41, 40
   },
   {
     "id": 7,
