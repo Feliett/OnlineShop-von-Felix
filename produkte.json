@@ -5,7 +5,7 @@
     "category": "Bekleidung",
     "price": 19.99,
     "description": "Hochwertiges T-Shirt aus 100% Baumwolle.",
-    "image": "images/tshirt.jpg",
+    "image": "images/tshirt-schwarz.jpg",
     "gender": "Männer",
     "sizeStock": {
       "XS": 5,
@@ -56,12 +56,12 @@
   },
   {
     "id": "p5",
-    "name": "Damen Bluse",
+    "name": "Herren Hemd",
     "category": "Bekleidung",
     "price": 39.99,
-    "description": "Elegante Bluse aus Seide.",
-    "image": "images/blouse.jpg",
-    "gender": "Frauen",
+    "description": "Elegantes Hemd aus hochwertigem Stoff.",
+    "image": "images/hemd-weiss.jpg",
+    "gender": "Männer",
     "sizeStock": {
       "XS": 6,
       "S": 10,
