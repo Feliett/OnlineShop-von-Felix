@@ -216,3 +216,23 @@ nav ul li a {
   object-fit: cover;
   border-radius: 5px;
 }
+
+.cart-info {
+  flex: 1;
+  overflow: hidden;
+}
+
+.cart-product-name {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.cart-product-size {
+  font-size: 12px;
+  color: #555;
+}
+
+.quantity-controls button {
+  padding: 4px 8px;
+  font-size: 14px;
+}
