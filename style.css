@@ -216,3 +216,12 @@ nav ul li a {
   object-fit: cover;
   border-radius: 5px;
 }
+.cart-product-name {
+  display: inline-block;
+  max-width: 150px; /* Passe die Breite nach Bedarf an */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  vertical-align: middle;
+}
+
