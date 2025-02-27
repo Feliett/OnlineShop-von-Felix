@@ -20,7 +20,7 @@
         <li><a href="#" onclick="setCategory('Schuhe')">Schuhe</a></li>
       </ul>
     </nav>
-    <!-- Warenkorb-Icon -->
+    <!-- Warenkorb-Icon (als Bild) -->
     <div class="cart-container">
       <img src="images/shopping-cart.png" alt="Warenkorb" class="cart-icon" onclick="openCartModal()">
     </div>
@@ -33,7 +33,17 @@
       <option value="Männer">Männer</option>
       <option value="Frauen">Frauen</option>
     </select>
-    <select id="clothing-size-filter" onchange="applyFilters()">
+    <select id="price-filter" onchange="applyFilters()">
+      <option value="Alle">Alle Preise</option>
+      <option value="0-9.99">0 - 9,99 €</option>
+      <option value="10-19.99">10 - 19,99 €</option>
+      <option value="20-49.99">20 - 49,99 €</option>
+      <option value="50-99.99">50 - 99,99 €</option>
+      <option value="100-199.99">100 - 199,99 €</option>
+      <option value="200-499.99">200 - 499,99 €</option>
+    </select>
+    <!-- Diese Dropdowns werden nur angezeigt, wenn entsprechende Kategorie aktiv ist -->
+    <select id="clothing-size-filter" onchange="applyFilters()" style="display:none;">
       <option value="Alle">Alle Größen (Bekleidung)</option>
       <option value="XS">XS</option>
       <option value="S">S</option>
@@ -42,7 +52,7 @@
       <option value="XL">XL</option>
       <option value="XXL">XXL</option>
     </select>
-    <select id="shoe-size-filter" onchange="applyFilters()">
+    <select id="shoe-size-filter" onchange="applyFilters()" style="display:none;">
       <option value="Alle">Alle Schuhgrößen</option>
       <option value="36">36</option>
       <option value="37">37</option>
@@ -60,7 +70,7 @@
   </div>
 
   <main>
-    <!-- Container für die dynamisch geladenen Produkte -->
+    <!-- Container für dynamisch geladene Produkte -->
     <div id="produkt-liste" class="grid-container"></div>
   </main>
 
@@ -69,6 +79,8 @@
     <div class="modal-content">
       <span class="close" id="modal-close">&times;</span>
       <div id="modal-product-details"></div>
+      <!-- Größe auswählen, falls verfügbar -->
+      <div id="size-selection" style="margin:10px 0;"></div>
       <button id="add-to-cart">In den Warenkorb</button>
     </div>
   </div>
@@ -81,8 +93,8 @@
       <div id="cart-product-list"></div>
       <div id="cart-total"></div>
       <div class="cart-actions">
-        <button id="continue-shopping">Weiter einkaufen</button>
-        <button id="checkout">Zur Kasse</button>
+        <button id="continue-shopping" onclick="closeCartModal()">Weiter einkaufen</button>
+        <button id="checkout" onclick="alert('Checkout-Funktionalität ist noch nicht implementiert.')">Zur Kasse</button>
       </div>
     </div>
   </div>
