@@ -20,7 +20,7 @@
         <li><a href="#" onclick="setCategory('Schuhe')">Schuhe</a></li>
       </ul>
     </nav>
-    <!-- Warenkorb-Icon (als Bild) -->
+    <!-- Warenkorb-Icon -->
     <div class="cart-container">
       <img src="images/shopping-cart.png" alt="Warenkorb" class="cart-icon" onclick="openCartModal()">
     </div>
@@ -42,7 +42,7 @@
       <option value="100-199.99">100 - 199,99 €</option>
       <option value="200-499.99">200 - 499,99 €</option>
     </select>
-    <!-- Diese Dropdowns werden nur angezeigt, wenn entsprechende Kategorie aktiv ist -->
+    <!-- Dropdowns für Größen, nur sichtbar bei entsprechender Kategorie -->
     <select id="clothing-size-filter" onchange="applyFilters()" style="display:none;">
       <option value="Alle">Alle Größen (Bekleidung)</option>
       <option value="XS">XS</option>
@@ -79,7 +79,7 @@
     <div class="modal-content">
       <span class="close" id="modal-close">&times;</span>
       <div id="modal-product-details"></div>
-      <!-- Größe auswählen, falls verfügbar -->
+      <!-- Bereich für Größenwahl, falls verfügbar -->
       <div id="size-selection" style="margin:10px 0;"></div>
       <button id="add-to-cart">In den Warenkorb</button>
     </div>
