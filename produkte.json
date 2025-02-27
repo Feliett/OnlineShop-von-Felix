@@ -6,6 +6,7 @@
     "price": 19.99,
     "description": "Hochwertiges T-Shirt aus 100% Baumwolle.",
     "image": "images/tshirt.jpg",
+    "gender": "Männer",
     "sizeStock": {
       "XS": 5,
       "S": 10,
@@ -22,6 +23,7 @@
     "price": 49.99,
     "description": "Stylischer Sneaker mit bequemer Sohle.",
     "image": "images/sneaker.jpg",
+    "gender": "Frauen",
     "sizeStock": {
       "36": 5,
       "37": 8,
@@ -39,6 +41,7 @@
     "price": 199.99,
     "description": "Edle Armbanduhr mit Lederarmband.",
     "image": "images/watch.jpg",
+    "gender": "Männer",
     "stock": 10
   },
   {
@@ -48,6 +51,7 @@
     "price": 29.99,
     "description": "Elegante Leder-Geldbörse mit vielen Fächern.",
     "image": "images/wallet.jpg",
+    "gender": "Frauen",
     "stock": 20
   },
   {
@@ -57,6 +61,7 @@
     "price": 39.99,
     "description": "Elegante Bluse aus Seide.",
     "image": "images/blouse.jpg",
+    "gender": "Frauen",
     "sizeStock": {
       "XS": 6,
       "S": 10,
@@ -73,6 +78,7 @@
     "price": 89.99,
     "description": "Edle Lederschuhe für Business und Freizeit.",
     "image": "images/leather-shoes.jpg",
+    "gender": "Männer",
     "sizeStock": {
       "40": 4,
       "41": 5,
@@ -90,6 +96,7 @@
     "price": 79.99,
     "description": "Feine Silberkette mit Anhänger.",
     "image": "images/necklace.jpg",
+    "gender": "Frauen",
     "stock": 15
   },
   {
@@ -99,6 +106,7 @@
     "price": 129.99,
     "description": "UV400 Schutz, polarisierte Gläser.",
     "image": "images/sunglasses.jpg",
+    "gender": "Männer",
     "stock": 8
   }
 ]
