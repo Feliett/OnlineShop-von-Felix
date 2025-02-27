@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "name": "Coolmax®-Hemd Regular Fit",
+    "price": 24.99,
+    "oldPrice": 30.99,
+    "category": "Bekleidung",
+    "image": "images/hemd_weiss.jpg",
+    "description": "Ein klassisches Hemd in Weiß, ideal für den Business-Look.",
+    "gender": "Männer",
+    "size": ["M", "L", "XL"]
+  },
+  {
+    "id": 2,
+    "name": "Coolmax® T-Shirt Slim Fit",
+    "price": 14.99,
+    "category": "Bekleidung",
+    "image": "images/tshirt_schwarz.jpg",
+    "description": "Ein bequemes T-Shirt in Schwarz für den Alltag.",
+    "gender": "Frauen",
+    "size": ["S", "M", "L"]
+  },
+  {
+    "id": 3,
+    "name": "Elegante Armbanduhr",
+    "price": 99.99,
+    "category": "Uhren",
+    "image": "images/uhr_elegant.jpg",
+    "description": "Eine elegante Uhr, die zu jedem Anlass passt.",
+    "gender": "Männer"
+  },
+  {
+    "id": 4,
+    "name": "Moderne Accessoires Tasche",
+    "price": 49.99,
+    "category": "Accessoires",
+    "image": "images/tasche.jpg",
+    "description": "Eine moderne Tasche für den Alltag.",
+    "gender": "Frauen"
+  },
+  {
+    "id": 5,
+    "name": "Exquisiter Schmuckanhänger",
+    "price": 29.99,
+    "category": "Schmuck",
+    "image": "images/schmuck.jpg",
+    "description": "Ein wunderschöner Anhänger, der jedes Outfit veredelt.",
+    "gender": "Frauen"
+  },
+  {
+    "id": 6,
+    "name": "Designer Sneaker",
+    "price": 79.99,
+    "category": "Schuhe",
+    "image": "images/sneaker.jpg",
+    "description": "Moderne Sneaker in verschiedenen Größen erhältlich.",
+    "gender": "Männer",
+    "shoeSize": 42
+  },
+  {
+    "id": 7,
+    "name": "Lässige Sneaker",
+    "price": 69.99,
+    "category": "Schuhe",
+    "image": "images/sneaker2.jpg",
+    "description": "Bequeme Sneaker für den Alltag.",
+    "gender": "Frauen",
+    "shoeSize": 38
+  }
+]
