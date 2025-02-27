@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.getElementById("checkout").addEventListener("click", () => {
     alert("Checkout-Funktionalität ist noch nicht implementiert.");
   });
-  // Schließen, wenn außerhalb des Modals geklickt wird
+  // Schließen, wenn außerhalb der Modale geklickt wird
   window.addEventListener("click", (event) => {
     const modal = document.getElementById("modal");
     const cartModal = document.getElementById("cart-modal");
@@ -43,7 +43,7 @@ function fetchProdukte() {
 // Setzt die aktuelle Kategorie und wendet Filter an
 function setCategory(kategorie) {
   currentCategory = kategorie;
-  // Je nach Kategorie, zeige bzw. verstecke die Größenfilter
+  // Größenfilter ein-/ausblenden je nach Kategorie
   if (kategorie === "Bekleidung") {
     document.getElementById("clothing-size-filter").style.display = "inline-block";
   } else {
@@ -76,12 +76,12 @@ function applyFilters() {
     const [min, max] = priceFilter.split("-").map(Number);
     filtered = filtered.filter(prod => prod.price >= min && prod.price <= max);
   }
-  // Bekleidung-Größenfilter (nur wenn Kategorie Bekleidung)
+  // Bekleidung-Größenfilter (nur bei Kategorie Bekleidung)
   const clothingSizeFilter = document.getElementById("clothing-size-filter").value;
   if (clothingSizeFilter !== "Alle" && currentCategory === "Bekleidung") {
     filtered = filtered.filter(prod => prod.size && prod.size.includes(clothingSizeFilter));
   }
-  // Schuhgrößenfilter (nur wenn Kategorie Schuhe)
+  // Schuhgrößenfilter (nur bei Kategorie Schuhe)
   const shoeSizeFilter = document.getElementById("shoe-size-filter").value;
   if (shoeSizeFilter !== "Alle" && currentCategory === "Schuhe") {
     filtered = filtered.filter(prod => prod.shoeSize && prod.shoeSize.toString() === shoeSizeFilter);
@@ -101,13 +101,13 @@ function renderProdukte(produkte) {
       <h3>${produkt.name}</h3>
       <p>${produkt.price.toFixed(2)} € ${produkt.oldPrice ? `<span class="old-price">${produkt.oldPrice.toFixed(2)} €</span>` : ""}</p>
     `;
-    // Öffne Modal mit Produktdetails beim Klick
+    // Öffnet das Modal mit Produktdetails beim Klick
     produktElement.addEventListener("click", () => openModal(produkt));
     container.appendChild(produktElement);
   });
 }
 
-// Öffnet das Modal für Produktdetails und ermöglicht Größenwahl, falls vorhanden
+// Öffnet das Modal für Produktdetails, inkl. Größenwahl (falls verfügbar)
 function openModal(produkt) {
   const modal = document.getElementById("modal");
   const modalDetails = document.getElementById("modal-product-details");
@@ -117,7 +117,7 @@ function openModal(produkt) {
     <p>${produkt.description || "Keine detaillierte Beschreibung verfügbar."}</p>
     <p class="price">${produkt.price.toFixed(2)} € ${produkt.oldPrice ? `<span class="old-price">${produkt.oldPrice.toFixed(2)} €</span>` : ""}</p>
   `;
-  // Falls das Produkt Größen hat, zeige eine Dropdown-Auswahl
+  // Größe wählen, falls verfügbar
   const sizeSelection = document.getElementById("size-selection");
   if (produkt.size || produkt.shoeSize) {
     let options = "<option value=\"\">Größe wählen</option>";
@@ -126,7 +126,6 @@ function openModal(produkt) {
         options += `<option value="${sz}">${sz}</option>`;
       });
     } else if (produkt.shoeSize) {
-      // Bei Schuhen: Erlaubt nur eine Größe (das Produkt hat eine feste Größe, die aber auch zur Anzeige kommt)
       options += `<option value="${produkt.shoeSize}">${produkt.shoeSize}</option>`;
     }
     sizeSelection.innerHTML = `<select id="selected-size">${options}</select>`;
@@ -145,14 +144,13 @@ function openModal(produkt) {
   modal.style.display = "block";
 }
 
-// Schließt das Produktdetail-Modal
 function closeModal() {
   document.getElementById("modal").style.display = "none";
 }
 
 // Warenkorb-Funktionen:
 
-// Fügt ein Produkt dem Warenkorb hinzu oder erhöht die Menge, falls es bereits existiert (unterscheidet nach Größe)
+// Fügt ein Produkt dem Warenkorb hinzu oder erhöht die Menge (unter Berücksichtigung der Größe)
 function addToCart(produkt, size) {
   const index = warenkorb.findIndex(item => item.id === produkt.id && item.size === size);
   if (index !== -1) {
@@ -182,18 +180,16 @@ function saveWarenkorbToLocalStorage() {
   localStorage.setItem("warenkorb", JSON.stringify(warenkorb));
 }
 
-// Öffnet das Warenkorb-Modal und rendert die enthaltenen Produkte
 function openCartModal() {
   renderCartProducts();
   document.getElementById("cart-modal").style.display = "block";
 }
 
-// Schließt das Warenkorb-Modal
 function closeCartModal() {
   document.getElementById("cart-modal").style.display = "none";
 }
 
-// Rendert die Produkte im Warenkorb, inkl. Plus/Minus-Steuerung und Anzeige der Gesamtsumme
+// Rendert die Produkte im Warenkorb, inklusive Plus/Minus-Steuerung und Gesamtpreis
 function renderCartProducts() {
   const cartList = document.getElementById("cart-product-list");
   cartList.innerHTML = "";
@@ -207,7 +203,7 @@ function renderCartProducts() {
     div.classList.add("cart-product");
     div.innerHTML = `
       <img src="${item.image}" alt="${item.name}">
-      <span>${item.name} ${item.size ? "(" + item.size + ")" : ""}</span>
+      <span class="cart-product-name">${item.name} ${item.size ? "(" + item.size + ")" : ""}</span>
       <span>${item.price.toFixed(2)} €</span>
       <div class="quantity-controls">
         <button onclick="decreaseQuantity(${item.id}, '${item.size}')">-</button>
@@ -221,7 +217,6 @@ function renderCartProducts() {
   updateCartTotal();
 }
 
-// Berechnet und aktualisiert die Gesamtsumme im Warenkorb
 function updateCartTotal() {
   let total = 0;
   warenkorb.forEach(item => {
@@ -230,7 +225,6 @@ function updateCartTotal() {
   document.getElementById("cart-total").innerHTML = "Gesamtsumme: " + total.toFixed(2) + " €";
 }
 
-// Erhöht die Menge eines Produkts im Warenkorb
 function increaseQuantity(productId, size) {
   const index = warenkorb.findIndex(item => item.id === productId && item.size === size);
   if (index !== -1) {
@@ -240,7 +234,6 @@ function increaseQuantity(productId, size) {
   }
 }
 
-// Verringert die Menge eines Produkts oder entfernt es, wenn die Menge 1 erreicht
 function decreaseQuantity(productId, size) {
   const index = warenkorb.findIndex(item => item.id === productId && item.size === size);
   if (index !== -1) {
@@ -254,7 +247,6 @@ function decreaseQuantity(productId, size) {
   }
 }
 
-// Entfernt ein Produkt komplett aus dem Warenkorb
 function removeFromCart(productId, size) {
   const index = warenkorb.findIndex(item => item.id === productId && item.size === size);
   if (index !== -1) {
