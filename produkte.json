@@ -55,7 +55,7 @@
     "image": "images/sneaker.jpg",
     "description": "Moderne Sneaker in verschiedenen Größen erhältlich.",
     "gender": "Männer",
-    "shoeSize": 42, 41, 40
+    "shoeSize": 42
   },
   {
     "id": 7,
