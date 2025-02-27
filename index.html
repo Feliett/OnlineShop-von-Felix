@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mein Online-Shop</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <!-- Logo als Link zur Startseite -->
+    <a href="index.html" class="logo">Mein Online-Shop</a>
+    <nav>
+      <ul>
+        <li><a href="#" onclick="setCategory('Alle')">Alle</a></li>
+        <li><a href="#" onclick="setCategory('Bekleidung')">Bekleidung</a></li>
+        <li><a href="#" onclick="setCategory('Uhren')">Uhren</a></li>
+        <li><a href="#" onclick="setCategory('Accessoires')">Accessoires</a></li>
+        <li><a href="#" onclick="setCategory('Schmuck')">Schmuck</a></li>
+        <li><a href="#" onclick="setCategory('Schuhe')">Schuhe</a></li>
+      </ul>
+    </nav>
+    <!-- Warenkorb-Icon -->
+    <div class="cart-container">
+      <img src="images/shopping-cart.png" alt="Warenkorb" class="cart-icon" onclick="openCartModal()">
+    </div>
+  </header>
+
+  <!-- Filter Controls -->
+  <div class="filter-controls">
+    <select id="gender-filter" onchange="applyFilters()">
+      <option value="Alle">Alle Geschlechter</option>
+      <option value="Männer">Männer</option>
+      <option value="Frauen">Frauen</option>
+    </select>
+    <select id="clothing-size-filter" onchange="applyFilters()">
+      <option value="Alle">Alle Größen (Bekleidung)</option>
+      <option value="XS">XS</option>
+      <option value="S">S</option>
+      <option value="M">M</option>
+      <option value="L">L</option>
+      <option value="XL">XL</option>
+      <option value="XXL">XXL</option>
+    </select>
+    <select id="shoe-size-filter" onchange="applyFilters()">
+      <option value="Alle">Alle Schuhgrößen</option>
+      <option value="36">36</option>
+      <option value="37">37</option>
+      <option value="38">38</option>
+      <option value="39">39</option>
+      <option value="40">40</option>
+      <option value="41">41</option>
+      <option value="42">42</option>
+      <option value="43">43</option>
+      <option value="44">44</option>
+      <option value="45">45</option>
+      <option value="46">46</option>
+      <option value="47">47</option>
+    </select>
+  </div>
+
+  <main>
+    <!-- Container für die dynamisch geladenen Produkte -->
+    <div id="produkt-liste" class="grid-container"></div>
+  </main>
+
+  <!-- Modal für Produktdetails -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="modal-close">&times;</span>
+      <div id="modal-product-details"></div>
+      <button id="add-to-cart">In den Warenkorb</button>
+    </div>
+  </div>
+
+  <!-- Modal für den Warenkorb -->
+  <div id="cart-modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="cart-close">&times;</span>
+      <h2>Warenkorb</h2>
+      <div id="cart-product-list"></div>
+      <div id="cart-total"></div>
+      <div class="cart-actions">
+        <button id="continue-shopping">Weiter einkaufen</button>
+        <button id="checkout">Zur Kasse</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="produkte.js"></script>
+</body>
+</html>
