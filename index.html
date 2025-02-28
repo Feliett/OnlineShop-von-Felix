@@ -2,14 +2,27 @@
 <html lang="de">
 <head>
   <meta charset="UTF-8">
+  <meta name="description" content="Mein Online-Shop – hochwertige Mode, Schuhe, Schmuck und Accessoires. Jetzt online shoppen!">
+  <meta name="keywords" content="Online-Shop, Mode, Schuhe, Schmuck, Accessoires">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Mein Online-Shop</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Google Analytics (Platzhalter, bitte deine Tracking-ID einsetzen) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'UA-XXXXXXXXX-X');
+  </script>
 </head>
 <body>
   <header>
-    <!-- Logo als Link zur Startseite -->
-    <a href="index.html" class="logo">Mein Online-Shop</a>
+    <!-- Logo als Link zur Startseite und Login-/Konto-Button -->
+    <div class="header-left">
+      <a href="index.html" class="logo">Mein Online-Shop</a>
+      <a href="#" class="login-link">Login / Mein Konto</a>
+    </div>
     <nav>
       <ul>
         <li><a href="#" onclick="setCategory('Alle')">Alle</a></li>
@@ -42,7 +55,7 @@
       <option value="100-199.99">100 - 199,99 €</option>
       <option value="200-499.99">200 - 499,99 €</option>
     </select>
-    <!-- Dropdowns für Größen, nur sichtbar bei entsprechender Kategorie -->
+    <!-- Größenfilter, nur sichtbar bei entsprechender Kategorie -->
     <select id="clothing-size-filter" onchange="applyFilters()" style="display:none;">
       <option value="Alle">Alle Größen (Bekleidung)</option>
       <option value="XS">XS</option>
@@ -79,9 +92,11 @@
     <div class="modal-content">
       <span class="close" id="modal-close">&times;</span>
       <div id="modal-product-details"></div>
-      <!-- Bereich für Größenwahl, falls verfügbar -->
+      <!-- Größenwahl-Bereich -->
       <div id="size-selection" style="margin:10px 0;"></div>
       <button id="add-to-cart">In den Warenkorb</button>
+      <!-- Platzhalter für Kundenrezensionen (optional) -->
+      <!-- <div id="customer-reviews">Kundenrezensionen kommen hierhin...</div> --> 
     </div>
   </div>
 
@@ -99,6 +114,7 @@
     </div>
   </div>
 
+  <!-- Hinweis: Bitte über einen lokalen Server testen (z. B. mit Live Server oder python -m http.server) -->
   <script src="produkte.js"></script>
 </body>
 </html>
