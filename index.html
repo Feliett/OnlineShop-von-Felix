@@ -1,120 +1,175 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="description" content="Mein Online-Shop – hochwertige Mode, Schuhe, Schmuck und Accessoires. Jetzt online shoppen!">
-  <meta name="keywords" content="Online-Shop, Mode, Schuhe, Schmuck, Accessoires">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mein Online-Shop</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Google Analytics (Platzhalter, bitte deine Tracking-ID einsetzen) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-XXXXXXXXX-X"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'UA-XXXXXXXXX-X');
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mein Onlineshop</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <!-- Logo als Link zur Startseite und Login-/Konto-Button -->
-    <div class="header-left">
-      <a href="index.html" class="logo">Mein Online-Shop</a>
-      <a href="#" class="login-link">Login / Mein Konto</a>
+
+    <!-- 🔹 HEADER MIT NAVIGATION -->
+    <header>
+        <h1 id="logo">Mein Onlineshop</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="loadProducts('all')">Alle Produkte</a></li>
+                <li><a href="#" onclick="loadProducts('Bekleidung')">Bekleidung</a></li>
+                <li><a href="#" onclick="loadProducts('Schuhe')">Schuhe</a></li>
+                <li><a href="#" onclick="loadProducts('Schmuck')">Schmuck</a></li>
+                <li><a href="#" onclick="openCart()">🛒 Warenkorb <span id="cart-count">0</span></a></li>
+                <li><a href="#" onclick="openLogin()">👤 Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- 🔹 PRODUKTLISTE -->
+    <section id="products-container">
+        <h2>Produkte</h2>
+        <div class="grid-container" id="product-list"></div>
+    </section>
+
+    <!-- 🔹 WARENKORB -->
+    <div id="cart-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeCart()">&times;</span>
+            <h2>Dein Warenkorb</h2>
+            <div id="cart-items"></div>
+            <p>Gesamt: <span id="cart-total">0,00 €</span></p>
+            <button onclick="checkout()">Bezahlen</button>
+        </div>
     </div>
-    <nav>
-      <ul>
-        <li><a href="#" onclick="setCategory('Alle')">Alle</a></li>
-        <li><a href="#" onclick="setCategory('Bekleidung')">Bekleidung</a></li>
-        <li><a href="#" onclick="setCategory('Uhren')">Uhren</a></li>
-        <li><a href="#" onclick="setCategory('Accessoires')">Accessoires</a></li>
-        <li><a href="#" onclick="setCategory('Schmuck')">Schmuck</a></li>
-        <li><a href="#" onclick="setCategory('Schuhe')">Schuhe</a></li>
-      </ul>
-    </nav>
-    <!-- Warenkorb-Icon -->
-    <div class="cart-container">
-      <img src="images/shopping-cart.png" alt="Warenkorb" class="cart-icon" onclick="openCartModal()">
+
+    <!-- 🔹 LOGIN/REGISTRIERUNG -->
+    <div id="login-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeLogin()">&times;</span>
+            <h2>Login / Registrierung</h2>
+            <input type="email" id="email" placeholder="E-Mail">
+            <input type="password" id="password" placeholder="Passwort">
+            <button onclick="login()">Login</button>
+            <button onclick="register()">Registrieren</button>
+        </div>
     </div>
-  </header>
 
-  <!-- Filter Controls -->
-  <div class="filter-controls">
-    <select id="gender-filter" onchange="applyFilters()">
-      <option value="Alle">Alle Geschlechter</option>
-      <option value="Männer">Männer</option>
-      <option value="Frauen">Frauen</option>
-    </select>
-    <select id="price-filter" onchange="applyFilters()">
-      <option value="Alle">Alle Preise</option>
-      <option value="0-9.99">0 - 9,99 €</option>
-      <option value="10-19.99">10 - 19,99 €</option>
-      <option value="20-49.99">20 - 49,99 €</option>
-      <option value="50-99.99">50 - 99,99 €</option>
-      <option value="100-199.99">100 - 199,99 €</option>
-      <option value="200-499.99">200 - 499,99 €</option>
-    </select>
-    <!-- Größenfilter, nur sichtbar bei entsprechender Kategorie -->
-    <select id="clothing-size-filter" onchange="applyFilters()" style="display:none;">
-      <option value="Alle">Alle Größen (Bekleidung)</option>
-      <option value="XS">XS</option>
-      <option value="S">S</option>
-      <option value="M">M</option>
-      <option value="L">L</option>
-      <option value="XL">XL</option>
-      <option value="XXL">XXL</option>
-    </select>
-    <select id="shoe-size-filter" onchange="applyFilters()" style="display:none;">
-      <option value="Alle">Alle Schuhgrößen</option>
-      <option value="36">36</option>
-      <option value="37">37</option>
-      <option value="38">38</option>
-      <option value="39">39</option>
-      <option value="40">40</option>
-      <option value="41">41</option>
-      <option value="42">42</option>
-      <option value="43">43</option>
-      <option value="44">44</option>
-      <option value="45">45</option>
-      <option value="46">46</option>
-      <option value="47">47</option>
-    </select>
-  </div>
+    <!-- 🔹 SCRIPTS -->
+    <script>
+        const API_BASE_URL = "https://extra-peer-rich-demonstrate.trycloudflare.com/api";
+        let cart = [];
 
-  <main>
-    <!-- Container für dynamisch geladene Produkte -->
-    <div id="produkt-liste" class="grid-container"></div>
-  </main>
+        // 🔹 PRODUKTE LADEN
+        async function loadProducts(category = "all") {
+            try {
+                const response = await fetch(`${API_BASE_URL}/products`);
+                const products = await response.json();
+                const productList = document.getElementById("product-list");
+                productList.innerHTML = "";
+                
+                products.forEach(product => {
+                    if (category === "all" || product.category === category) {
+                        productList.innerHTML += `
+                            <div class="product">
+                                <img src="${product.image}" alt="${product.name}">
+                                <h3>${product.name}</h3>
+                                <p>${product.price} €</p>
+                                <button onclick="addToCart(${product._id}, '${product.name}', ${product.price})">In den Warenkorb</button>
+                            </div>
+                        `;
+                    }
+                });
+            } catch (error) {
+                console.error("Fehler beim Laden der Produkte:", error);
+            }
+        }
 
-  <!-- Modal für Produktdetails -->
-  <div id="modal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="modal-close">&times;</span>
-      <div id="modal-product-details"></div>
-      <!-- Größenwahl-Bereich -->
-      <div id="size-selection" style="margin:10px 0;"></div>
-      <button id="add-to-cart">In den Warenkorb</button>
-      <!-- Platzhalter für Kundenrezensionen (optional) -->
-      <!-- <div id="customer-reviews">Kundenrezensionen kommen hierhin...</div> --> 
-    </div>
-  </div>
+        // 🔹 PRODUKT ZUM WARENKORB HINZUFÜGEN
+        function addToCart(id, name, price) {
+            const item = cart.find(p => p.id === id);
+            if (item) {
+                item.quantity++;
+            } else {
+                cart.push({ id, name, price, quantity: 1 });
+            }
+            updateCart();
+        }
 
-  <!-- Modal für den Warenkorb -->
-  <div id="cart-modal" class="modal">
-    <div class="modal-content">
-      <span class="close" id="cart-close">&times;</span>
-      <h2>Warenkorb</h2>
-      <div id="cart-product-list"></div>
-      <div id="cart-total"></div>
-      <div class="cart-actions">
-        <button id="continue-shopping" onclick="closeCartModal()">Weiter einkaufen</button>
-        <button id="checkout" onclick="alert('Checkout-Funktionalität ist noch nicht implementiert.')">Zur Kasse</button>
-      </div>
-    </div>
-  </div>
+        // 🔹 WARENKORB AKTUALISIEREN
+        function updateCart() {
+            const cartCount = document.getElementById("cart-count");
+            cartCount.innerText = cart.length;
 
-  <!-- Hinweis: Bitte über einen lokalen Server testen (z. B. mit Live Server oder python -m http.server) -->
-  <script src="produkte.js"></script>
+            const cartItems = document.getElementById("cart-items");
+            const cartTotal = document.getElementById("cart-total");
+
+            cartItems.innerHTML = "";
+            let total = 0;
+
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                cartItems.innerHTML += `
+                    <div class="cart-item">
+                        <p>${item.name} x ${item.quantity} - ${item.price * item.quantity} €</p>
+                        <button onclick="removeFromCart(${item.id})">🗑</button>
+                    </div>
+                `;
+            });
+
+            cartTotal.innerText = `${total.toFixed(2)} €`;
+        }
+
+        // 🔹 WARENKORB ÖFFNEN/SCHLIEßEN
+        function openCart() { document.getElementById("cart-modal").style.display = "block"; }
+        function closeCart() { document.getElementById("cart-modal").style.display = "none"; }
+
+        // 🔹 LOGIN-FUNKTION
+        async function login() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const response = await fetch(`${API_BASE_URL}/auth/login`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+            if (data.token) {
+                localStorage.setItem("token", data.token);
+                alert("Login erfolgreich!");
+                closeLogin();
+            } else {
+                alert("Fehler: " + data.msg);
+            }
+        }
+
+        // 🔹 REGISTRIERUNG
+        async function register() {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            const response = await fetch(`${API_BASE_URL}/auth/register`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ email, password })
+            });
+
+            const data = await response.json();
+            if (data.token) {
+                localStorage.setItem("token", data.token);
+                alert("Registrierung erfolgreich!");
+                closeLogin();
+            } else {
+                alert("Fehler: " + data.msg);
+            }
+        }
+
+        // 🔹 MODALE FENSTER
+        function openLogin() { document.getElementById("login-modal").style.display = "block"; }
+        function closeLogin() { document.getElementById("login-modal").style.display = "none"; }
+
+        // 🔹 INITIAL PRODUKTE LADEN
+        loadProducts();
+    </script>
+
 </body>
 </html>
