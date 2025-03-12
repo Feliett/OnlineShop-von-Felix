@@ -1,5 +1,5 @@
 // 📌 API-URL für Backend (Cloudflare Tunnel)
-const API_BASE_URL = "https://extra-peer-rich-demonstrate.trycloudflare.com/api";
+const API_BASE_URL = "https://pcs-republic-refers-cr.trycloudflare.com/api";
 
 // 📌 Stripe Checkout URL
 const STRIPE_CHECKOUT_URL = "https://checkout.stripe.com/pay/";
