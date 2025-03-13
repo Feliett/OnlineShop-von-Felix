@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", () => {
     loadProducts();
-    updateCart();
+    updateCart(); // Stelle sicher, dass updateCart definiert ist
 
     document.getElementById("category-filter").addEventListener("change", loadProducts);
     document.getElementById("gender-filter").addEventListener("change", loadProducts);
@@ -23,7 +23,7 @@ function loadProducts() {
                             <img src="${product.image}" data-id="${product._id}" alt="${product.name}">
                             <h3>${product.name}</h3>
                             <p>${product.price} €</p>
-                            <button class="add-to-cart" data-id="${product._id}">In den Warenkorb</button>
+                            <button class="add-to-cart" data-id="${product._id}" onclick="addToCart('${product._id}')">In den Warenkorb</button>
                         </div>
                     `;
                 }
@@ -33,7 +33,7 @@ function loadProducts() {
 }
 
 // ✅ PRODUKTE IN WARENKORB LEGEN
-function addToCart(productId, size) {
+function addToCart(productId, size = "M") {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let item = cart.find(p => p.id === productId && p.size === size);
     if (item) {
@@ -46,7 +46,7 @@ function addToCart(productId, size) {
 }
 
 // ✅ WARENKORB ANZEIGEN & AKTUALISIEREN
-function showCart() {
+function updateCart() {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let html = "";
     let totalPrice = 0;
@@ -78,5 +78,16 @@ function changeQuantity(id, size, change) {
         if (item.quantity <= 0) cart = cart.filter(p => p !== item);
     }
     localStorage.setItem("cart", JSON.stringify(cart));
-    showCart();
+    updateCart();
+}
+
+// ✅ WARENKORB ANZEIGEN
+function showCart() {
+    document.getElementById("cartModal").style.display = "block";
+    updateCart();
+}
+
+// ✅ WARENKORB SCHLIESSEN
+function closeCart() {
+    document.getElementById("cartModal").style.display = "none";
 }
