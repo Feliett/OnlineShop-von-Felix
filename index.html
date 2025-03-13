@@ -8,10 +8,23 @@
 </head>
 <body>
 
-    <!-- Header mit Logo & Warenkorb -->
+    <!-- Header mit Logo, Filter & Warenkorb -->
     <header>
         <a href="index.html" class="logo">Mein Shop</a>
-        <button id="cart-icon">🛒 Warenkorb (<span id="cart-count">0</span>)</button>
+        <select id="category-filter">
+            <option value="Alle">Alle Kategorien</option>
+            <option value="Bekleidung">Bekleidung</option>
+            <option value="Schuhe">Schuhe</option>
+            <option value="Accessoires">Accessoires</option>
+            <option value="Schmuck">Schmuck</option>
+            <option value="Uhren">Uhren</option>
+        </select>
+        <select id="gender-filter">
+            <option value="Alle">Alle Geschlechter</option>
+            <option value="Männer">Männer</option>
+            <option value="Frauen">Frauen</option>
+        </select>
+        <button id="cart-icon">🛒 (<span id="cart-count">0</span>)</button>
     </header>
 
     <!-- Produktbereich -->
@@ -25,6 +38,8 @@
             <span class="close" onclick="closeCart()">&times;</span>
             <h2>Dein Warenkorb</h2>
             <div id="cart-items"></div>
+            <p><strong>Gesamtanzahl:</strong> <span id="total-quantity">0</span></p>
+            <p><strong>Gesamtpreis:</strong> <span id="total-price">0</span> €</p>
             <button onclick="checkout()">Zur Kasse</button>
         </div>
     </div>
@@ -36,6 +51,8 @@
             <h2 id="productModalTitle"></h2>
             <img id="productModalImage" src="" alt="">
             <p id="productModalDescription"></p>
+            <p><strong>Preis:</strong> <span id="productModalPrice"></span> €</p>
+            <select id="size-select"></select>
             <button id="addToCart">In den Warenkorb</button>
         </div>
     </div>
