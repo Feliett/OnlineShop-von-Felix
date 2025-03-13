@@ -1,10 +1,11 @@
 document.addEventListener("DOMContentLoaded", () => {
     loadProducts();
-    updateCart(); // Stelle sicher, dass updateCart definiert ist
-
+    updateCart();
+    
     document.getElementById("category-filter").addEventListener("change", loadProducts);
     document.getElementById("gender-filter").addEventListener("change", loadProducts);
     document.getElementById("cart-icon").addEventListener("click", showCart);
+    document.getElementById("login-button").addEventListener("click", loginUser);
 });
 
 // ✅ PRODUKTE LADEN & FILTERN
@@ -23,7 +24,7 @@ function loadProducts() {
                             <img src="${product.image}" data-id="${product._id}" alt="${product.name}">
                             <h3>${product.name}</h3>
                             <p>${product.price} €</p>
-                            <button class="add-to-cart" data-id="${product._id}" onclick="addToCart('${product._id}')">In den Warenkorb</button>
+                            <button class="add-to-cart" data-id="${product._id}" onclick="addToCart('${product._id}', '${product.name}')">In den Warenkorb</button>
                         </div>
                     `;
                 }
@@ -33,13 +34,13 @@ function loadProducts() {
 }
 
 // ✅ PRODUKTE IN WARENKORB LEGEN
-function addToCart(productId, size = "M") {
+function addToCart(productId, productName, size = "M") {
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
     let item = cart.find(p => p.id === productId && p.size === size);
     if (item) {
         item.quantity++;
     } else {
-        cart.push({ id: productId, size: size, quantity: 1 });
+        cart.push({ id: productId, name: productName, size: size, quantity: 1 });
     }
     localStorage.setItem("cart", JSON.stringify(cart));
     updateCart();
@@ -54,8 +55,8 @@ function updateCart() {
     cart.forEach(product => {
         html += `
             <div class="cart-item">
-                <img src="images/${product.id}.jpg" alt="Produkt">
-                <p>${product.id} (${product.size})</p>
+                <img src="images/${product.id}.jpg" alt="${product.name}">
+                <p>${product.name} (${product.size})</p>
                 <button onclick="changeQuantity('${product.id}', '${product.size}', -1)">➖</button>
                 ${product.quantity}
                 <button onclick="changeQuantity('${product.id}', '${product.size}', 1)">➕</button>
@@ -81,7 +82,7 @@ function changeQuantity(id, size, change) {
     updateCart();
 }
 
-// ✅ WARENKORB ANZEIGEN
+// ✅ WARENKORB IN EINEM EXTRA FENSTER
 function showCart() {
     document.getElementById("cartModal").style.display = "block";
     updateCart();
@@ -90,4 +91,41 @@ function showCart() {
 // ✅ WARENKORB SCHLIESSEN
 function closeCart() {
     document.getElementById("cartModal").style.display = "none";
+}
+
+// ✅ NUTZER ANMELDEN
+function loginUser() {
+    let email = document.getElementById("email").value;
+    let password = document.getElementById("password").value;
+    fetch("https://vbulletin-ant-avon-portland.trycloudflare.com/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.token) {
+            localStorage.setItem("token", data.token);
+            alert("Login erfolgreich!");
+        } else {
+            alert("Login fehlgeschlagen.");
+        }
+    });
+}
+
+// ✅ ZAHLUNG VIA STRIPE
+function checkout() {
+    fetch("https://vbulletin-ant-avon-portland.trycloudflare.com/api/checkout", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ cart: JSON.parse(localStorage.getItem("cart")) })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.sessionUrl) {
+            window.location.href = data.sessionUrl;
+        } else {
+            alert("Fehler bei der Zahlung.");
+        }
+    });
 }
