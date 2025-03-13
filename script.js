@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ✅ PRODUKTE LADEN
 function loadProducts() {
-    fetch("https://DEINE-CLOUDFLARE-URL.trycloudflare.com/api/products")
+    fetch("https://vbulletin-ant-avon-portland.trycloudflare.com/api")
         .then(response => response.json())
         .then(products => {
             let html = "";
@@ -47,7 +47,7 @@ function loadProducts() {
 
 // ✅ PRODUKTDETAILS ANZEIGEN
 function openProductModal(productId) {
-    fetch(`https://DEINE-CLOUDFLARE-URL.trycloudflare.com/api/products/${productId}`)
+    fetch(`https://vbulletin-ant-avon-portland.trycloudflare.com/api/products/${productId}`)
         .then(response => response.json())
         .then(product => {
             document.getElementById("productModalTitle").innerText = product.name;
