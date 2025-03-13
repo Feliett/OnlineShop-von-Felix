@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // ✅ PRODUKTE LADEN
 function loadProducts() {
-    fetch("https://vbulletin-ant-avon-portland.trycloudflare.com/api")
+    fetch("https://vbulletin-ant-avon-portland.trycloudflare.com/api/products")
         .then(response => response.json())
         .then(products => {
             let html = "";
